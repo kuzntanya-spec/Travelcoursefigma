@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # или master
+      - main
 
 jobs:
   build-and-deploy:
@@ -19,7 +19,7 @@ jobs:
         node-version: '18'
         
     - name: Install dependencies
-      run: npm ci
+      run: npm install  # ✅ заменено с npm ci на npm install
       
     - name: Build project
       run: npm run build
@@ -28,4 +28,4 @@ jobs:
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./build  # или ./dist, в зависимости от вашего проекта
+        publish_dir: ./build
